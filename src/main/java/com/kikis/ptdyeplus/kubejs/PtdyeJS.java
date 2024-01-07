@@ -4,15 +4,19 @@ import com.kikis.ptdyeplus.OpenStonecutter;
 import com.kikis.ptdyeplus.PtdyePlus;
 import com.kikis.ptdyeplus.integration.PonderTooltipComponentProvider;
 import com.kikis.ptdyeplus.integration.PonderTooltipPlugin;
+import com.kikis.ptdyeplus.kubejs.block.entity.BetterInventoryAttachment;
 import com.kikis.ptdyeplus.util.EntityContainerLevelAccess;
 import com.kikis.ptdyeplus.util.KeyBinding;
 import com.kikis.ptdyeplus.util.MinecraftMenuBuilder;
 import dev.latvian.mods.kubejs.KubeJSPlugin;
+import dev.latvian.mods.kubejs.block.entity.BlockEntityAttachmentType;
 import dev.latvian.mods.kubejs.event.EventGroup;
 import dev.latvian.mods.kubejs.event.EventHandler;
 import dev.latvian.mods.kubejs.script.BindingsEvent;
 import dev.latvian.mods.kubejs.script.ScriptType;
 import dev.latvian.mods.kubejs.util.ClassFilter;
+
+import java.util.List;
 
 public class PtdyeJS extends KubeJSPlugin {
 
@@ -61,5 +65,10 @@ public class PtdyeJS extends KubeJSPlugin {
         filter.deny(MinecraftMenuBuilder.class);
         filter.deny(PonderTooltipComponentProvider.class);
         filter.deny(PonderTooltipPlugin.class);
+    }
+
+    @Override
+    public void registerBlockEntityAttachments(List<BlockEntityAttachmentType> types) {
+        types.add(BetterInventoryAttachment.TYPE);
     }
 }
